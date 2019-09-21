@@ -737,4 +737,167 @@ public class Utility
 		}
 	}
 	
-}
+	public static String day(String d)
+	   {
+			switch(d)
+			{
+				case "Sunday": System.out.println("0");
+					       d = "0" ;
+					       break;
+				case "Monday": 
+					       d = "1" ;System.out.println("1");
+					       break;
+				case "Tuesday": 
+				     	        d = "2" ;System.out.println("2");
+					        break;
+				case "Wednesday": 
+					          d = "3" ;System.out.println("3");
+					          break;
+				case "Thursday": System.out.println("4");
+						 d = "4";
+						 break;
+				case "Friday": System.out.println("5");
+					       d = "5";
+				       	       break;
+				case "Saturday": System.out.println("6");
+						 d = "6";
+						 break;
+				default : System.out.println("Enter the Day of the week in a Valid Manner:('ex' Sun, Mon ...");
+		    	}
+			return String.valueOf(d);
+	    }
+
+	    public static String month(String m)
+	    {
+			switch(m)
+			{ 
+				case "January":  System.out.println("0");
+						     m = "0";
+						     break;
+	
+				case "February":  System.out.println("1");
+						     m = "1";
+						     break;
+	
+				case "March":  System.out.println("2");
+						     m = "2";
+						    break;
+	
+				case "April":  System.out.println("3");
+						     m = "3";
+						     break;
+	
+				case "May":  System.out.println("4");
+						     m = "4";
+						     break;
+	
+				case "June":  System.out.println("5");
+						     m = "5";
+						     break;
+	
+				case "July":  System.out.println("6");
+						     m = "6";
+						     break;
+	
+				case "August":  m = "7";
+						System.out.println("07"); 
+						break;
+	
+				case "September":  System.out.println("08");
+						     m = "8";
+						    break;
+	
+				case "October":  System.out.println("09");
+						     m = "9";
+						     break;
+	
+				case "November":  System.out.println("10");
+						     m = "10";
+						     break;
+	
+				case "December":  System.out.println("11");
+						     m = "11";
+						     break;
+	
+				default : System.out.println("Enter the Day of the week in a Valid Manner:('ex' Sunday, Monday ...");
+		    	}
+			return String.valueOf(m);
+	    }
+
+	    public static int dayOfWeek(int y,int m,int d)
+	    {
+			int y0 = y-(14-m )/12;
+			System.out.println(y0);
+			int x = y0+(y0/4)-(y0/100)+(y0/400);
+			System.out.println(x);
+			int m0 = m+12*((14-m)/12)-2;
+			System.out.println(m0);
+			int d0 = (d+x+31*m0/12)%7;
+			System.out.println(d0);
+			return d0;
+	    }
+	    
+	    public static void temperatureConvertor(double Answer2,boolean in,int storage,boolean errorCheck)
+	    {
+		    	if(storage == 1) 
+				{
+					Answer2 -= 32;
+					Answer2 *= 5/9.0;	
+					System.out.println("It is " + Answer2 + " Degrees in Celcius.");
+				} 
+				
+				if(storage == 2) 
+				{
+					Answer2 *= 9.0/5;
+					Answer2 += 32;
+					System.out.println("It is " + Answer2 + " Degrees in Fahrenheit.");
+				} 
+				
+				System.out.println("Would you like to convert another temperature?");
+				
+				while(true) 
+				{
+					String retry = inputString().trim().toLowerCase();
+						if (retry.equals("y")) 
+						{
+							errorCheck = true;
+							break;
+						} 
+						else if (retry.equals("n")) 
+						{
+							in = false;
+							break;
+						} 
+						else 
+						{
+							System.out.println("Please answer y/n");
+						}
+				}
+		}
+	    
+	    public static double monthlyPayment(int Y,double P,double R)
+	    {
+	    	double n;
+	    	n = 12*Y;
+	    	double r = (R/(12*100));
+	    	double denominator = (1 - (Math.pow((1+r), (-n))));
+	    	double numerator = P * r;
+	    	double payment = (numerator / denominator);
+	    	return payment;
+	    }
+	    
+	    public static void squareRoot(double c,double epsilon )
+	    {
+	    	double t = c; 
+	        
+	        while (Math.abs(t - c / t) > epsilon * t) 
+	        {
+	           t = (c / t + t) / 2.0;
+	        }
+	        System.out.println();
+
+	        System.out.println("Square Root of the number:' "+ c +" ' with Newton's Formula is ' "+t+" '");
+	    }
+	    
+}	
+
